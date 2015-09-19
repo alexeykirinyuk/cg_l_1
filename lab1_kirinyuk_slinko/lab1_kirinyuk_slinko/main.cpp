@@ -4,15 +4,15 @@ using namespace std;
 
 int main()
 {
-	const int m = 3;
-	double x[] = {1, 2, 3};
+	const int m = 10;
+	double x[] = {5, 5, 5, 5, 5, 5, 5, 5, 5, 10};
 	double mat[m][m];
 	
 	for(int i = 0; i < m; i++)
 	{
 		for(int j = 0; j < m; j++)
 		{
-			mat[j][i] = rand() % 11;
+			mat[j][i] = rand() % 100;
 			cout<<mat[j][i] << "\t";
 		}
 		cout<<endl;
@@ -73,7 +73,6 @@ int main()
 				{
 					mat[i][j] /= a;
 				}
-				
 				b[i] /= a;
 			}
 		}
