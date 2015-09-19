@@ -4,15 +4,15 @@ using namespace std;
 
 int main()
 {
-	const int m = 10;
-	double x[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	const int m = 3;
+	double x[] = {1, 2, 3};
 	double mat[m][m];
 	
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < m; i++)
 	{
 		for(int j = 0; j < m; j++)
 		{
-			mat[j][i] = rand() % 101;
+			mat[j][i] = rand() % 11;
 			cout<<mat[j][i] << "\t";
 		}
 		cout<<endl;
@@ -34,26 +34,56 @@ int main()
 		cout<<b[i]<<"\t";
 	}
 	cout<<endl;
-
-	for(int hh = 0; hh < m; hh++)
+	for(int k = 0; k < m; k++)
 	{
 		//нормируем, что бы первые все элементы были = 1
 		for(int i = 0; i < m; i++)
 		{
-			double a = mat[i][hh];
-			for(int j = 0; j < m; j++)
-			{
-				mat[i][j] = mat[i][j] / a;
-			}
-			b[i] /= a;
+				double a = mat[i][k];
+				if(a != 0 && a != 1)
+				{
+					for(int j = k; j < m; j++)
+					{
+						mat[i][j] /= a;
+					}
+					b[i] /= a;
+				}
 		}
-		for(int i = 1; i < m; i++)
+
+		for(int i = k + 1; i < m; i++)
 		{
+			
 			for(int j = 0; j < m; j++)
 			{
-				mat[i][j] -= mat[hh][j];
+				mat[i][j] -= mat[k][j];
 			}
-			b[i] -= b[hh];
+			b[i] -= b[k];
+		}
+	}
+
+	//обратно
+	for(int k = m - 1; k > 0; k--)
+	{
+		for(int i = m - 1; i >= 0; i--)
+		{
+			double a = mat[i][k];
+			if(a != 0 && a != 1)
+			{
+				for(int j = k; j >= 0; j--)
+				{
+					mat[i][j] /= a;
+				}
+				
+				b[i] /= a;
+			}
+		}
+		for(int i = k - 1; i >= 0; i--)
+		{
+			for(int j = m - 1; j >=0; j--)
+			{
+				mat[i][j] -= mat[k][j];
+			}
+			b[i] -= b[k];
 		}
 	}
 
