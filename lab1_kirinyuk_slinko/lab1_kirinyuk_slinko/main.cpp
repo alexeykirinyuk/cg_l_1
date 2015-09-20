@@ -4,15 +4,15 @@ using namespace std;
 
 int main()
 {
-	const int m = 3;
-	double x[] = {10,10,11};
+	const int m = 10;
+	double x[] = {8,7,6,34,754,76,234,86,23,8765};
 	double mat[m][m];
 	
 	for(int i = 0; i < m; i++)
 	{
 		for(int j = 0; j < m; j++)
 		{
-			mat[j][i] = rand() % 10;
+			mat[j][i] = rand() % 1748;
 		}
 	}
 
@@ -34,7 +34,7 @@ int main()
 		double h = 0;
 		for(int j = 0; j < m; j++)
 		{
-			h += (mat[i][j] * x[i]);
+			h += (mat[i][j] * x[j]);
 		}
 		b[i] = h;
 	}
@@ -57,7 +57,6 @@ int main()
 					{
 						mat[i][j] /= a;
 					}
-
 					b[i] /= a;
 				}
 		}
@@ -73,16 +72,6 @@ int main()
 				b[i] -= b[k];
 			}
 		}
-		for(int i = 0; i < m; i++)
-	{
-		for(int j = 0; j < m; j++)
-		{
-			cout<<mat[i][j]<<"\t\t";
-		}
-		cout<<b[i]<<endl;
-	}
-		cout<<endl;
-		
 	}
 		
 	//обратно
@@ -112,24 +101,6 @@ int main()
 				b[i] -= b[k];
 			}
 		}
-		for(int i = 0; i < m; i++)
-	{
-		for(int j = 0; j < m; j++)
-		{
-			cout<<mat[i][j]<<"\t\t";
-		}
-		cout<<b[i]<<endl;
-	}
-		cout<<endl;
-	}
-
-	for(int i = 0; i < m; i++)
-	{
-		for(int j = 0; j < m; j++)
-		{
-			cout<<mat[i][j]<<"\t\t";
-		}
-		cout<<b[i]<<endl;
 	}
 
 	for(int i = 0; i < m; i++)
@@ -143,7 +114,7 @@ int main()
 	{
 		for(int j = 0; j < m; j++)
 		{
-			cout<<mat[i][j]<<"\t\t";
+			cout<<mat[i][j]<<"\t";
 		}
 		cout<<b[i]<<endl;
 	}
